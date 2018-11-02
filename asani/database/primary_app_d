@@ -1,0 +1,420 @@
+/*
+SQLyog Trial v13.1.1 (64 bit)
+MySQL - 5.7.23-log : Database - primary_app_db
+*********************************************************************
+*/
+
+/*!40101 SET NAMES utf8 */;
+
+/*!40101 SET SQL_MODE=''*/;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`primary_app_db` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
+
+USE `primary_app_db`;
+
+/*Table structure for table `bank` */
+
+DROP TABLE IF EXISTS `bank`;
+
+CREATE TABLE `bank` (
+  `bank_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `bank_code` int(11) DEFAULT NULL,
+  `bank_name` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `acct_number` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `acct_name` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `is_active` int(11) DEFAULT NULL,
+  `create_time` timestamp NULL DEFAULT NULL,
+  `create_by` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `update_time` timestamp NULL DEFAULT NULL,
+  `update_by` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`bank_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=88805 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `bank` */
+
+insert  into `bank`(`bank_id`,`bank_code`,`bank_name`,`acct_number`,`acct_name`,`is_active`,`create_time`,`create_by`,`update_time`,`update_by`) values 
+(88001,2,'BCA - Bank Central Asia','4943058698','PT Asani Teknologi Keuangan',1,'2018-10-29 00:00:00','hastatan',NULL,NULL),
+(88002,4,'BRI - Bank Rakyat Indonesia','122301000541304','PT Asani Teknologi Keuangan',1,'2018-10-29 00:00:00','hastatan',NULL,NULL),
+(88003,6,'BSM - Bank Sinarmas','45363104','PT Asani Teknologi Keuangan',1,'2018-10-29 00:00:00','hastatan',NULL,NULL);
+
+/*Table structure for table `doc` */
+
+DROP TABLE IF EXISTS `doc`;
+
+CREATE TABLE `doc` (
+  `doc_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `doc_code` int(11) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  `status` int(11) DEFAULT NULL,
+  `url` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `create_time` timestamp NULL DEFAULT NULL,
+  `update_time` timestamp NULL DEFAULT NULL,
+  `update_by` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `note` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`doc_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `doc` */
+
+insert  into `doc`(`doc_id`,`doc_code`,`user_id`,`status`,`url`,`create_time`,`update_time`,`update_by`,`note`) values 
+(1,2,1,1,'asani.id/uid1_ktp','2018-10-29 00:00:00','2018-10-29 00:10:00','hastatan',NULL),
+(2,4,1,2,'asani.id/uid1_selfie','2018-10-29 00:00:00','2018-10-29 00:10:00','hastatan','foto selfie tidak jelas'),
+(3,6,1,1,'asani.id/uid1_kk','2018-10-29 00:00:00','2018-10-29 00:10:00','hastatan',NULL),
+(4,2,2,1,'asani.id/uid2_ktp','2018-10-29 00:00:00','2018-10-29 00:10:00','hastatan',NULL),
+(5,8,2,2,'asani.id/uid2_payslip','2018-10-29 00:00:00','2018-10-29 00:10:00','hastatan','slip gaji terlalu lama, 2 tahun lalu'),
+(6,2,3,1,'asani.id/uid3_ktp','2018-10-29 00:00:00','2018-10-29 00:10:00','hastatan',NULL),
+(7,4,3,1,'asani.id/uid3_selfie','2018-10-29 00:00:00','2018-10-29 00:10:00','hastatan',NULL),
+(8,6,3,1,'asani.id/uid3_kk','2018-10-29 00:00:00','2018-10-29 00:10:00','hastatan',NULL),
+(9,8,3,1,'asani.id/uid3_payslip','2018-10-29 00:00:00','0000-00-00 00:00:00','hastatan','5000000'),
+(25,2,6,0,'https://asani-imagestorage.s3.amazonaws.com/261de88.png?AWSAccessKeyId=AKIAIL5HD4XTPVWUBOTQ&Signature=1qfe7iXz%2FK%2FSb9ZkN%2FajmWP4eus%3D&Expires=1541021765','2018-10-31 20:36:05',NULL,NULL,NULL),
+(28,8,2,0,'https://asani-imagestorage.s3.amazonaws.com/20181010_095639.jpg?AWSAccessKeyId=AKIAIL5HD4XTPVWUBOTQ&Signature=98OstAlqkumNlOfKGtZawfuaj%2FQ%3D&Expires=1541030348','2018-10-31 22:59:08',NULL,NULL,NULL),
+(29,2,5,1,'https://asani-imagestorage.s3.amazonaws.com/pp.jpg?AWSAccessKeyId=AKIAIL5HD4XTPVWUBOTQ&Signature=aZbDJZ2GO5bANflxcczV%2FcWE9p0%3D&Expires=1541052635','2018-11-01 05:10:35',NULL,NULL,NULL),
+(30,4,5,1,'https://asani-imagestorage.s3.amazonaws.com/pp.jpg?AWSAccessKeyId=AKIAIL5HD4XTPVWUBOTQ&Signature=PvHPeIABwN64kNY5vyuYZr4CrIg%3D&Expires=1541052647','2018-11-01 05:10:47',NULL,NULL,NULL),
+(31,2,0,2,'https://asani-imagestorage.s3.amazonaws.com/image.jpg?AWSAccessKeyId=AKIAIL5HD4XTPVWUBOTQ&Signature=VyJqdIaNivV%2B7tO4hnlU9gE1ZIg%3D&Expires=1541058538','2018-11-01 06:48:59',NULL,NULL,NULL),
+(32,4,0,2,'https://asani-imagestorage.s3.amazonaws.com/4FE0B409-761E-41CF-A710-F34E98483172.jpeg?AWSAccessKeyId=AKIAIL5HD4XTPVWUBOTQ&Signature=P6FRUZ2e8I1Ln5BqaF72F1b%2FGw4%3D&Expires=1541058605','2018-11-01 06:50:06',NULL,NULL,NULL),
+(39,2,14,0,'https://asani-imagestorage.s3.amazonaws.com/test.jpg?response-content-type=multipart%2Fform-data&AWSAccessKeyId=AKIAIL5HD4XTPVWUBOTQ&Signature=RyoXDr%2FMXDJ7eAVoiO%2B5eUBYxBA%3D&Expires=1541062353','2018-11-01 07:52:33',NULL,NULL,NULL),
+(42,4,14,0,'https://asani-imagestorage.s3.amazonaws.com/test.jpg?response-content-type=multipart%2Fform-data&AWSAccessKeyId=AKIAIL5HD4XTPVWUBOTQ&Signature=YqNWwsmZq0kRGO6Zydt0WenmNHg%3D&Expires=1541065624','2018-11-01 08:47:05',NULL,NULL,NULL),
+(44,2,7,0,'https://asani-imagestorage.s3.amazonaws.com/bisagakcoy.jpeg?response-content-type=multipart%2Fform-data&AWSAccessKeyId=AKIAIL5HD4XTPVWUBOTQ&Signature=XHUct4db6U0IV8PE8wr0jxk0a7U%3D&Expires=1541131251','2018-11-02 10:00:50',NULL,NULL,NULL),
+(45,2,7,0,'https://asani-imagestorage.s3.amazonaws.com/bisagakcoy.jpeg?response-content-type=multipart%2Fform-data&AWSAccessKeyId=AKIAIL5HD4XTPVWUBOTQ&Signature=QOfdWGGFqIeHFqqXsWoZor77XZ0%3D&Expires=1541131461','2018-11-02 10:04:20',NULL,NULL,NULL),
+(46,2,7,0,'https://asani-imagestorage.s3.amazonaws.com/bisagakcoy.jpeg?response-content-type=multipart%2Fform-data&AWSAccessKeyId=AKIAIL5HD4XTPVWUBOTQ&Signature=02i1%2FtALX1N%2FnNvLDbg%2F1OTJh8E%3D&Expires=1541131494','2018-11-02 10:04:54',NULL,NULL,NULL),
+(47,2,7,0,'https://asani-imagestorage.s3.amazonaws.com/bisagakcoy.jpeg?response-content-type=multipart%2Fform-data&AWSAccessKeyId=AKIAIL5HD4XTPVWUBOTQ&Signature=6rg%2FHfaTLtlF9J06Vz0jzlnH5%2BE%3D&Expires=1541131524','2018-11-02 10:05:23',NULL,NULL,NULL);
+
+/*Table structure for table `doc_dictionary` */
+
+DROP TABLE IF EXISTS `doc_dictionary`;
+
+CREATE TABLE `doc_dictionary` (
+  `dict_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `doc_code` int(11) DEFAULT NULL,
+  `doc_name` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `doc_value` text COLLATE utf8_unicode_ci,
+  `icon_url` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`dict_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `doc_dictionary` */
+
+insert  into `doc_dictionary`(`dict_id`,`doc_code`,`doc_name`,`doc_value`,`icon_url`) values 
+(1,2,'KTP','{\"0\":25} ','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/icon_ktp.png'),
+(2,4,'Selfie','{\"0\":25} ','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/icon_selfie.png'),
+(3,6,'Kartu Keluarga','{\"0\":25} ','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/icon_kk.png'),
+(4,8,'Slip Gaji','{\"10000000\":100,\"8000000\":75,\"5000000\":50,\"3000000\":25,\"0\":0} ','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/icon_payslip.png'),
+(5,10,'NPWP','{\"0\":25} ','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/icon_npwp.png');
+
+/*Table structure for table `history` */
+
+DROP TABLE IF EXISTS `history`;
+
+CREATE TABLE `history` (
+  `loan_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `destination_number` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `create_time` timestamp NULL DEFAULT NULL,
+  `update_time` timestamp NULL DEFAULT NULL,
+  `disburse_by` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `disburse_time` timestamp NULL DEFAULT NULL,
+  `due_time` timestamp NULL DEFAULT NULL,
+  `payment_time` timestamp NULL DEFAULT NULL,
+  `payment_method` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `note` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `reject_by` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `reject_time` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`loan_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `history` */
+
+insert  into `history`(`loan_id`,`user_id`,`product_id`,`destination_number`,`status`,`create_time`,`update_time`,`disburse_by`,`disburse_time`,`due_time`,`payment_time`,`payment_method`,`note`,`reject_by`,`reject_time`) values 
+(1,2,110012,'81808260000',0,'2018-09-25 09:03:40','2018-10-29 00:06:00','adinda','2018-09-25 00:06:59','2018-10-09 23:59:59','2018-10-08 13:49:53','Bank Sinarmas',NULL,NULL,NULL),
+(2,2,110012,'81808260000',0,'2018-10-09 14:00:00','2018-10-29 00:13:00','adinda','2018-10-09 14:03:30','2018-10-23 23:59:59',NULL,NULL,'','',NULL),
+(3,3,110011,'818457475',4,'2018-10-13 08:52:43','2018-10-13 08:59:43','rini','2018-10-13 08:59:43','2018-10-20 23:59:59','2018-10-19 10:25:34','Bank Rakyat Indonesia',NULL,NULL,NULL),
+(4,3,110011,'818457475',5,'2018-10-19 20:25:34','2018-10-19 20:29:23','rini','2018-10-19 20:29:23','2018-10-26 23:59:59','2018-10-30 13:49:53','Bank Central Asia',NULL,NULL,NULL),
+(5,7,110010,'81977682984',2,'2018-10-20 10:25:34','2018-10-20 10:29:37','zikri','2018-10-20 10:29:37','2018-10-27 23:59:59',NULL,NULL,NULL,NULL,NULL),
+(6,1,110017,'85688233722',1,'2018-01-22 10:37:52','2018-10-22 10:39:52','zikri','2018-10-22 10:39:52','2018-11-05 23:59:59',NULL,NULL,NULL,NULL,NULL),
+(7,5,110012,'81994097088',6,'2018-10-31 10:53:41','2018-10-31 10:59:41',NULL,NULL,NULL,NULL,NULL,'tidak memperbaiki foto selfie yang blur','oei','2018-10-31 10:59:41'),
+(8,6,110017,'85728333045',7,'2018-10-25 10:53:41','2018-10-29 10:59:41',NULL,NULL,NULL,NULL,NULL,NULL,'oei','2018-10-29 10:59:41'),
+(9,9,110003,'8121151095',8,'2018-07-27 23:59:59','2018-07-27 23:59:59','adinda','2018-07-27 23:59:59','2018-10-31 23:59:59',NULL,NULL,NULL,NULL,NULL);
+
+/*Table structure for table `otp` */
+
+DROP TABLE IF EXISTS `otp`;
+
+CREATE TABLE `otp` (
+  `otp_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `phone_number` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `last_otp_sent` int(11) DEFAULT NULL,
+  `expire_time` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`otp_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `otp` */
+
+insert  into `otp`(`otp_id`,`phone_number`,`last_otp_sent`,`expire_time`) values 
+(29,'81224161895',7384,'2018-11-01 09:13:16'),
+(30,'81994097088',3589,'2018-11-02 03:09:54'),
+(31,'85728333045',6062,'2018-10-31 20:41:08'),
+(32,'81808260000',4041,'2018-11-01 12:21:44'),
+(33,'81977682984',5571,'2018-11-01 10:42:51'),
+(34,'818457475',1581,'2018-11-01 07:32:57'),
+(35,'81222222222',9050,'2018-10-30 14:14:41'),
+(36,'857283333045',8214,'2018-10-30 14:22:46'),
+(37,'8121151095',5530,'2018-10-31 17:00:27'),
+(38,'85669457128',3536,'2018-11-01 07:47:32'),
+(39,'82121248631',9647,'2018-11-01 03:54:12'),
+(40,'8180826000',4357,'2018-10-31 16:33:57'),
+(41,'81845747',5549,'2018-10-31 16:44:04'),
+(42,'85232981418',6195,'2018-11-01 04:48:43'),
+(43,'82112975458',3708,'2018-11-01 08:57:16'),
+(44,'8199409788',9488,'2018-11-01 05:15:55'),
+(45,'81363876087',3152,'2018-11-01 07:54:40');
+
+/*Table structure for table `product` */
+
+DROP TABLE IF EXISTS `product`;
+
+CREATE TABLE `product` (
+  `product_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `product_type` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `product_operator` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `product_nominal` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `product_desc` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `product_price` int(11) DEFAULT NULL,
+  `amount_disbursed` int(11) DEFAULT NULL,
+  `lender_id` int(11) DEFAULT NULL,
+  `lender_name` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `min_credit_score` int(11) DEFAULT NULL,
+  `interest_pct` decimal(11,2) DEFAULT NULL,
+  `interest_annual_pct` decimal(11,2) DEFAULT NULL,
+  `interest_amount` int(11) DEFAULT NULL,
+  `admin_fee` int(11) DEFAULT NULL,
+  `penalty` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `total_bill` int(11) DEFAULT NULL,
+  `tenor_days` int(11) DEFAULT NULL,
+  `grace_period` int(11) DEFAULT NULL,
+  `default_period` int(11) DEFAULT NULL,
+  `url_lender_logo` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `url_product_logo` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `req_doc_code` int(11) DEFAULT NULL,
+  `req_bank_code` int(11) DEFAULT NULL,
+  `is_syariah` int(11) DEFAULT NULL,
+  `is_active` int(11) DEFAULT NULL,
+  `create_time` timestamp NULL DEFAULT NULL,
+  `create_by` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `update_time` timestamp NULL DEFAULT NULL,
+  `update_by` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`product_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=550006 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `product` */
+
+insert  into `product`(`product_id`,`product_type`,`product_operator`,`product_nominal`,`product_desc`,`product_price`,`amount_disbursed`,`lender_id`,`lender_name`,`min_credit_score`,`interest_pct`,`interest_annual_pct`,`interest_amount`,`admin_fee`,`penalty`,`total_bill`,`tenor_days`,`grace_period`,`default_period`,`url_lender_logo`,`url_product_logo`,`req_doc_code`,`req_bank_code`,`is_syariah`,`is_active`,`create_time`,`create_by`,`update_time`,`update_by`) values 
+(110001,'Pulsa','Telkomsel','10K','',10500,0,200,'Danamas',400,0.00,0.00,0,500,'0',11000,7,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_telkomsel.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110002,'Pulsa','Telkomsel','20K','',20000,0,200,'Danamas',436,0.00,0.00,0,1000,'0',21000,14,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_telkomsel.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110003,'Pulsa','Telkomsel','25K','',25000,0,200,'Danamas',445,0.00,0.00,0,1000,'0',26000,14,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_telkomsel.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110004,'Pulsa','Telkomsel','40K','',40000,0,200,'Danamas',472,0.00,0.00,0,1000,'0',41000,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_telkomsel.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110005,'Pulsa','Telkomsel','50K','',49000,0,200,'Danamas',490,0.00,0.00,0,1000,'0',51000,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_telkomsel.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110006,'Pulsa','Telkomsel','100K','',97000,0,200,'Danamas',580,0.00,0.00,0,1000,'0',98000,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_telkomsel.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110007,'Pulsa','Telkomsel','150K','',145500,0,200,'Danamas',582,0.00,0.00,0,1000,'0',146500,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_telkomsel.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110008,'Pulsa','Telkomsel','200K','',197000,0,200,'Danamas',585,0.00,0.00,0,1000,'0',198000,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_telkomsel.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110009,'Pulsa','XL','10K','',11000,12000,200,'Danamas',400,0.00,0.00,0,500,'0',11500,7,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_xl.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110010,'Pulsa','XL','15K','',15000,0,200,'Danamas',436,0.00,0.00,0,500,'0',15500,7,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_xl.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110011,'Pulsa','XL','25K','',25000,0,200,'Danamas',445,0.00,0.00,0,1000,'0',26000,14,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_xl.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110012,'Pulsa','XL','50K','',49500,0,200,'Danamas',490,0.00,0.00,0,1000,'0',50500,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_xl.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110013,'Pulsa','XL','100K','',99000,0,200,'Danamas',580,0.00,0.00,0,1000,'0',100000,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_xl.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110014,'Pulsa','XL','200K','',198000,0,200,'Danamas',585,0.00,0.00,0,1000,'0',199000,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_xl.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110015,'Pulsa','Indosat','10K','',11000,0,200,'Danamas',400,0.00,0.00,0,500,'0',11500,7,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_indosat.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110016,'Pulsa','Indosat','20K','',20000,0,200,'Danamas',436,0.00,0.00,0,1000,'0',21000,14,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_indosat.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110017,'Pulsa','Indosat','25K','',25000,0,200,'Danamas',445,0.00,0.00,0,1000,'0',26000,14,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_indosat.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110018,'Pulsa','Indosat','30K','',30000,0,200,'Danamas',454,0.00,0.00,0,1000,'0',31000,14,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_indosat.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110019,'Pulsa','Indosat','50K','',49000,0,200,'Danamas',490,0.00,0.00,0,1000,'0',50000,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_indosat.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110020,'Pulsa','Indosat','100K','',97000,0,200,'Danamas',580,0.00,0.00,0,1000,'0',98000,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_indosat.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110021,'Pulsa','Indosat','150K','',145000,0,200,'Danamas',582,0.00,0.00,0,1000,'0',146000,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_indosat.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110022,'Pulsa','Tri','10K','',10500,0,200,'Danamas',400,0.00,0.00,0,500,'0',11000,7,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_tri.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110023,'Pulsa','Tri','15K','',15000,0,200,'Danamas',436,0.00,0.00,0,500,'0',15500,7,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_tri.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110024,'Pulsa','Tri','20K','',20000,0,200,'Danamas',436,0.00,0.00,0,1000,'0',21000,14,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_tri.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110025,'Pulsa','Tri','25K','',25000,0,200,'Danamas',445,0.00,0.00,0,1000,'0',26000,14,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_tri.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110026,'Pulsa','Tri','50K','',49500,0,200,'Danamas',490,0.00,0.00,0,1000,'0',50500,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_tri.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110027,'Pulsa','Tri','100K','',98500,0,200,'Danamas',580,0.00,0.00,0,1000,'0',99500,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_tri.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110028,'Pulsa','Tri','150K','',148000,0,200,'Danamas',582,0.00,0.00,0,1000,'0',149000,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_tri.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(110029,'Pulsa','Tri','200K','',197000,0,200,'Danamas',585,0.00,0.00,0,1000,'0',198000,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_tri.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(220001,'Paket Data','Telkomsel','Data 20','',20000,0,200,'Danamas',436,0.00,0.00,0,1000,'0',21000,14,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_telkomsel.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(220002,'Paket Data','Telkomsel','Data 25','Nikmati kuota 300MB - 750MB + 1GB Videomax selama 30 hari',25000,0,200,'Danamas',445,0.00,0.00,0,1000,'0',26000,14,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_telkomsel.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(220003,'Paket Data','Telkomsel','Data 50','Nikmati kuota 800MB - 1.5GB. Bonus 1GB Kuota Midnight (00:01-06:59) + 1GB Kuota Midnight RAFI + 3GB Videomax selama 30 hari.',50000,0,200,'Danamas',490,0.00,0.00,0,1000,'0',51000,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_telkomsel.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(220004,'Paket Data','Indosat','1GB Unlimited','Kuota utama 1GB dan Gratis 24 Jam akses ke Facebook, Twitter, Whatsapp, Line, BBM, GOJEK, Grab, Iflix, Spotify, aktif selama 30 hari.',19500,20000,200,'Danamas',436,0.00,0.00,0,1000,'0',20500,14,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_indosat.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(220005,'Paket Data','Indosat','2GB Unlimited','Kuota utama 2GB dan Gratis 24 Jam akses ke Facebook, Twitter, Whatsapp, Line, BBM, GOJEK, Grab, Iflix, Spotify, aktif selama 30 hari.',33000,0,200,'Danamas',472,0.00,0.00,0,1000,'0',34000,14,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_indosat.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(220007,'Paket Data','Indosat','7GB Unlimited','Kuota utama 7GB, bebas SMS ke sesama Indosat dan Gratis 24 Jam akses ke Facebook, Twitter, Whatsapp, Line, BBM, GOJEK, Grab, Iflix, Spotify, aktif selama 30 hari.',63500,0,200,'Danamas',490,0.00,0.00,0,1000,'0',64500,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_indosat.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(220008,'Paket Data','Indosat','10GB Unlimited','Kuota utama 10GB, bebas SMS ke sesama Indosat dan Gratis 24 Jam akses ke Facebook, Twitter, Whatsapp, Line, BBM, GOJEK, Grab, Iflix, Spotify, aktif selama 30 hari.',83000,0,200,'Danamas',580,0.00,0.00,0,1000,'0',84000,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_indosat.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(220009,'Paket Data','Indosat','15GB Unlimited','Kuota utama 15GB, bebas SMS ke sesama Indosat dan Gratis 24 Jam akses ke Facebook, Twitter, Whatsapp, Line, BBM, GOJEK, Grab, Iflix, Spotify, aktif selama 30 hari.',99500,0,200,'Danamas',580,0.00,0.00,0,1000,'0',100500,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_indosat.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(220010,'Paket Data','Indosat','3GB Unlimited','Kuota utama 3GB, bebas SMS ke sesama Indosat dan Gratis 24 Jam akses ke Facebook, Twitter, Whatsapp, Line, BBM, GOJEK, Grab, Iflix, Spotify, aktif selama 30 hari.',47000,0,200,'Danamas',580,0.00,0.00,0,1000,'0',48000,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_indosat.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(220011,'Paket Data','Smartfren','Data 1,25GB','Paket Kuota 24 jam, 1.25GB, Kuota malam 1.75GB, chat sepuasnya selama 7 hari',10000,0,200,'Danamas',400,0.00,0.00,0,500,'0',10500,7,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_smartfren.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(220012,'Paket Data','Smartfren','Data 2GB','Paket Kuota 24 jam, 2GB, Kuota malam 2GB, chat sepuasnya selama 14 hari',19000,0,200,'Danamas',436,0.00,0.00,0,1000,'0',20000,14,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_smartfren.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(220013,'Paket Data','Smartfren','Data 4GB','Paket Kuota 24 jam, 4GB, Kuota malam 4GB, chat sepuasnya selama 14 hari',28000,0,200,'Danamas',454,0.00,0.00,0,1000,'0',29000,14,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_smartfren.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(220014,'Paket Data','Smartfren','Data 8GB','Paket Kuota 24 jam, 8GB, Kuota malam 8GB, chat sepuasnya selama 30 hari',56000,0,200,'Danamas',580,0.00,0.00,0,1000,'0',57000,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_smartfren.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(220015,'Paket Data','Smartfren','Data 15GB','Paket Kuota 24 jam, 15GB, Kuota malam 15GB, chat sepuasnya selama 30 hari',94000,0,200,'Danamas',580,0.00,0.00,0,1000,'0',95000,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_smartfren.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(220016,'Paket Data','XL','HotRod 800MB','XL Data HotRod 800MB. Masa aktif 30 hari.',29500,0,200,'Danamas',454,0.00,0.00,0,1000,'0',30500,14,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_xl.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(220017,'Paket Data','XL','HotRod 3GB','XL Data HotRod 3GB. Masa aktif 30 hari.',54000,0,200,'Danamas',580,0.00,0.00,0,1000,'0',55000,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_xl.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(220018,'Paket Data','XL','HotRod 6GB','XL Data HotRod 6GB. Masa aktif 30 hari.',90000,0,200,'Danamas',580,0.00,0.00,0,1000,'0',91000,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_xl.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(220019,'Paket Data','XL','8GB Xtra Combo','XL Data HotRod 6GB. Masa aktif 30 hari.',59000,0,200,'Danamas',580,0.00,0.00,0,1000,'0',60000,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_xl.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(220020,'Paket Data','XL','12GB Xtra Combo','XL Data HotRod 12GB. Masa aktif 30 hari.',89000,0,200,'Danamas',580,0.00,0.00,0,1000,'0',90000,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_xl.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(220021,'Paket Data','Tri','10GB Mix Super','Paket Three Data Mix Super 10Gb (2Gb all Network 8Gb 4G) masa aktif 30 hari',49500,0,200,'Danamas',490,0.00,0.00,0,1000,'0',50500,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_tri.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(220022,'Paket Data','Tri','24GB Mix Super','Paket Three Data Mix Super Super 24Gb (4Gb all Network / 20Gb 4G) masa aktif 30 hari',89000,0,200,'Danamas',580,0.00,0.00,0,1000,'0',90000,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_tri.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(220023,'Paket Data','Tri','30GB Mix Super','Paket Three Data Mix Super 30Gb (8Gb All Network / 22Gb 4G) masa aktif 30 hari',98500,0,200,'Danamas',580,0.00,0.00,0,1000,'0',99500,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_tri.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(330001,'Prepaid PLN','PLN','Token 20.000','',20500,0,200,'Danamas',436,0.00,0.00,0,1000,'0',21500,14,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_pln.png',20,84,0,0,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(330002,'Prepaid PLN','PLN','Token 50.000','',50500,0,200,'Danamas',490,0.00,0.00,0,1000,'0',51500,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_pln.png',20,84,0,0,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(330003,'Prepaid PLN','PLN','Token 100.000','',100500,0,200,'Danamas',580,0.00,0.00,0,1000,'0',101500,30,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_pln.png',20,84,0,0,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440001,'Voucher Game','Battlenet','Card $5','Voucher untuk region U.S',82000,0,100,'Dompet Kilat',580,0.00,0.00,0,1000,'0',83000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_battlenet.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440002,'Voucher Game','Battlenet','Card $10','Voucher untuk region U.S',160000,0,100,'Dompet Kilat',582,0.00,0.00,0,1000,'0',161000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_battlenet.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440003,'Voucher Game','Garena','33 Shell','',9500,0,100,'Dompet Kilat',400,0.00,0.00,0,500,'0',10000,7,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_garena.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440004,'Voucher Game','Garena','66 Shell','',18500,0,100,'Dompet Kilat',436,0.00,0.00,0,1000,'0',19500,14,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_garena.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440005,'Voucher Game','Garena','166 Shell','',46000,0,100,'Dompet Kilat',490,0.00,0.00,0,1000,'0',47000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_garena.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440006,'Voucher Game','Garena','330 Shell','',92000,0,100,'Dompet Kilat',580,0.00,0.00,0,1000,'0',93000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_garena.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440007,'Voucher Game','Gemscool','1.000 Gcash ','',9500,0,100,'Dompet Kilat',400,0.00,0.00,0,500,'0',10000,7,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_gemscool.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440008,'Voucher Game','Gemscool','2.000 Gcash ','',19000,0,100,'Dompet Kilat',436,0.00,0.00,0,1000,'0',20000,14,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_gemscool.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440009,'Voucher Game','Gemscool','3.000 Gcash ','',29000,0,100,'Dompet Kilat',454,0.00,0.00,0,1000,'0',30000,14,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_gemscool.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440010,'Voucher Game','Gemscool','5.000 Gcash ','',48000,0,100,'Dompet Kilat',490,0.00,0.00,0,1000,'0',49000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_gemscool.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440011,'Voucher Game','Gemscool','10.000 Gcash ','',96000,0,100,'Dompet Kilat',580,0.00,0.00,0,1000,'0',97000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_gemscool.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440012,'Voucher Game','Gemscool','20.000 Gcash ','',192000,0,100,'Dompet Kilat',585,0.00,0.00,0,1000,'0',193000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_gemscool.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440013,'Voucher Game','Lyto','10.000 GameOn','Voucher Fisik - 2.500 Koin',10000,0,100,'Dompet Kilat',400,0.00,0.00,0,500,'0',10500,7,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_lyto.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440014,'Voucher Game','Lyto','20.000 GameOn','Voucher Fisik - 5.500 Koin',20000,0,100,'Dompet Kilat',436,0.00,0.00,0,1000,'0',21000,14,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_lyto.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440015,'Voucher Game','Lyto','35.000 GameOn','Voucher Fisik - 10.000 Koin',35000,0,100,'Dompet Kilat',472,0.00,0.00,0,1000,'0',36000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_lyto.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440016,'Voucher Game','Lyto','65.000 GameOn','Voucher Fisik - 20.000 Koin',65000,0,100,'Dompet Kilat',580,0.00,0.00,0,1000,'0',66000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_lyto.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440017,'Voucher Game','Lyto','175.000 GameOn','Voucher Fisik - 75.000 Koin',175000,0,100,'Dompet Kilat',585,0.00,0.00,0,1000,'0',176000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_lyto.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440018,'Voucher Game','Megaxus','10.000 Mi Cash','',10000,0,100,'Dompet Kilat',400,0.00,0.00,0,500,'0',10500,7,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_megasus.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440019,'Voucher Game','Megaxus','20.000 Mi Cash','',20000,0,100,'Dompet Kilat',436,0.00,0.00,0,1000,'0',21000,14,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_megasus.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440020,'Voucher Game','Megaxus','50.000 Mi Cash','',50500,0,100,'Dompet Kilat',490,0.00,0.00,0,1000,'0',51500,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_megasus.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440021,'Voucher Game','Megaxus','210.000 Mi Cash','',200500,0,100,'Dompet Kilat',585,0.00,0.00,0,1000,'0',201500,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_megasus.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440022,'Voucher Game','Mobile Legends','36 Diamond','',10000,0,100,'Dompet Kilat',400,0.00,0.00,0,500,'0',10500,7,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_mobilelegends.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440023,'Voucher Game','Mobile Legends','74 Diamond','',20000,0,100,'Dompet Kilat',436,0.00,0.00,0,1000,'0',21000,14,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_mobilelegends.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440024,'Voucher Game','Mobile Legends','184 Diamond','',50000,0,100,'Dompet Kilat',490,0.00,0.00,0,1000,'0',51000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_mobilelegends.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440025,'Voucher Game','Mobile Legends','758 Diamond','',200000,0,100,'Dompet Kilat',585,0.00,0.00,0,1000,'0',201000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_mobilelegends.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440026,'Voucher Game','MOL Points','100 Points','',9500,0,100,'Dompet Kilat',400,0.00,0.00,0,500,'0',10000,7,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_mol.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440027,'Voucher Game','MOL Points','200 Points','',19000,0,100,'Dompet Kilat',436,0.00,0.00,0,1000,'0',20000,14,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_mol.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440028,'Voucher Game','MOL Points','500 Points','',47500,0,100,'Dompet Kilat',490,0.00,0.00,0,1000,'0',48500,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_mol.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440029,'Voucher Game','MOL Points','2.000 Points','',190000,0,100,'Dompet Kilat',585,0.00,0.00,0,1000,'0',191000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_mol.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440030,'Voucher Game','Nitendo eShop','10 USD','Voucher untuk region U.S',144000,0,100,'Dompet Kilat',582,0.00,0.00,0,1000,'0',145000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_nintendo.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440031,'Voucher Game','PSN Card','Rp 100.000','Voucher untuk region Indonesia',115000,0,100,'Dompet Kilat',582,0.00,0.00,0,1000,'0',116000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_psn.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440032,'Voucher Game','PUBG','Steam Key','',190000,0,100,'Dompet Kilat',585,0.00,0.00,0,1000,'0',191000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_pubg.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440033,'Voucher Game','Steam','Rp 6.000','Steam Wallet Code Rp 6.000 ',7000,0,100,'Dompet Kilat',400,0.00,0.00,0,500,'0',7500,7,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_steam.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440034,'Voucher Game','Steam','Rp 8.000','Steam Wallet Code Rp 8.000 ',9000,0,100,'Dompet Kilat',400,0.00,0.00,0,500,'0',9500,7,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_steam.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440035,'Voucher Game','Steam','Rp 12.000','Steam Wallet Code Rp 12.000',14000,0,100,'Dompet Kilat',436,0.00,0.00,0,1000,'0',15000,14,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_steam.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440036,'Voucher Game','Steam','Rp 45.000','Steam Wallet Code Rp 45.000',50000,0,100,'Dompet Kilat',490,0.00,0.00,0,1000,'0',51000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_steam.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440037,'Voucher Game','Steam','Rp 60.000','Steam Wallet Code Rp 60.000',68500,0,100,'Dompet Kilat',580,0.00,0.00,0,1000,'0',69500,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_steam.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440038,'Voucher Game','Steam','Rp 90.000','Steam Wallet Code Rp 90.000',102000,0,100,'Dompet Kilat',580,0.00,0.00,0,1000,'0',103000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_steam.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440039,'Voucher Game','Steam','Rp 120.000','Steam Wallet Code Rp 120.000',135000,0,100,'Dompet Kilat',582,0.00,0.00,0,1000,'0',136000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_steam.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440040,'Voucher Game','Steam','5 USD','Kurs Steam USD mengikuti kurs saat penukaran',75000,0,100,'Dompet Kilat',580,0.00,0.00,0,1000,'0',76000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_steam.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440041,'Voucher Game','Steam','10 USD','Kurs Steam USD mengikuti kurs saat penukaran',148000,0,100,'Dompet Kilat',582,0.00,0.00,0,1000,'0',149000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_steam.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440042,'Voucher Game','Unipin','Rp 10.000','',10000,0,100,'Dompet Kilat',400,0.00,0.00,0,500,'0',10500,7,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_unipin.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440043,'Voucher Game','Unipin','Rp 20.000','',20000,0,100,'Dompet Kilat',436,0.00,0.00,0,1000,'0',21000,14,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_unipin.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440044,'Voucher Game','Unipin','Rp 50.000','',50000,0,100,'Dompet Kilat',490,0.00,0.00,0,1000,'0',51000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_unipin.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440045,'Voucher Game','Unipin','Rp 100.000','',100000,0,100,'Dompet Kilat',580,0.00,0.00,0,1000,'0',101000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_unipin.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440046,'Voucher Game','Wavegame','40 Coins','',9500,0,100,'Dompet Kilat',400,0.00,0.00,0,500,'0',10000,7,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_wavegame.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440047,'Voucher Game','Wavegame','84 Coins','',18500,0,100,'Dompet Kilat',436,0.00,0.00,0,1000,'0',19500,14,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_wavegame.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440048,'Voucher Game','Wavegame','210 Coins','',48000,0,100,'Dompet Kilat',490,0.00,0.00,0,1000,'0',49000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_wavegame.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440049,'Voucher Game','MOG Play','Rp 20.000','',19000,0,100,'Dompet Kilat',436,0.00,0.00,0,1000,'0',20000,14,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_mog.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440050,'Voucher Game','MOG Play','Rp 50.000','',47500,0,100,'Dompet Kilat',490,0.00,0.00,0,1000,'0',48500,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_mog.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440051,'Voucher Game','MOG Play','Rp 100.000','',95000,0,100,'Dompet Kilat',580,0.00,0.00,0,1000,'0',96000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_mog.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440052,'Voucher Game','MOG Play','Rp 200.000','',190000,0,100,'Dompet Kilat',585,0.00,0.00,0,1000,'0',191000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_mog.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(440053,'Voucher Game','iTunes','10 USD','Kode voucher iTunes hanya dapat di-redeem dengan menggunakan akun Apple region U.S.',151000,0,100,'Dompet Kilat',582,0.00,0.00,0,1000,'0',152000,30,7,90,'https://www.dompetkilat.co.id/img/bottom_logo.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_itunes.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(550001,'Cash','Loan','Rp 500.000','',500000,494000,200,'Danamas',592,0.00,0.00,0,6000,'0.1',0,14,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_cash.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(550002,'Cash','Loan','Rp 1.000.000','',1000000,990000,200,'Danamas',604,0.00,0.00,0,10000,'0.1',0,14,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_cash.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(550003,'Cash','Loan','Rp 2.000.000','',2000000,1980000,200,'Danamas',628,0.00,0.00,0,20000,'0.1',0,14,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_cash.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00',''),
+(550004,'Cash','Loan','Rp 5.000.000','',5000000,4950000,200,'Danamas',700,0.00,0.00,0,50000,'0.1',0,14,7,90,'https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_danamas.png','https://s3-ap-southeast-1.amazonaws.com/asani-imagestorage/logo_operator/logo_cash.png',20,84,0,1,'0000-00-00 00:00:00','christian','0000-00-00 00:00:00','');
+
+/*Table structure for table `score_dictionary` */
+
+DROP TABLE IF EXISTS `score_dictionary`;
+
+CREATE TABLE `score_dictionary` (
+  `dict_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `lower_bounds` int(11) DEFAULT NULL,
+  `upper_bounds` int(11) DEFAULT NULL,
+  `level_ind` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `level_eng` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`dict_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `score_dictionary` */
+
+insert  into `score_dictionary`(`dict_id`,`lower_bounds`,`upper_bounds`,`level_ind`,`level_eng`) values 
+(1,200,579,'Kurang','Poor'),
+(2,580,669,'Cukup','Fair'),
+(3,670,739,'Baik','Good'),
+(4,740,799,'Sangat Baik','Very Good'),
+(5,800,850,'Luar Biasa','Excellent');
+
+/*Table structure for table `scorecard` */
+
+DROP TABLE IF EXISTS `scorecard`;
+
+CREATE TABLE `scorecard` (
+  `scorecard_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `feature` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `score` int(11) DEFAULT NULL,
+  `create_time` timestamp NULL DEFAULT NULL,
+  `update_time` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`user_id`,`feature`),
+  KEY `scorecard_id` (`scorecard_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=842 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `scorecard` */
+
+insert  into `scorecard`(`scorecard_id`,`user_id`,`feature`,`score`,`create_time`,`update_time`) values 
+(771,2,'KTP',25,'2018-11-02 04:12:03',NULL),
+(838,3,'Kartu Keluarga',25,'2018-11-02 13:14:41',NULL),
+(836,3,'KTP',25,'2018-11-02 13:14:41',NULL),
+(840,3,'loan_3',50,'2018-11-02 13:14:41',NULL),
+(841,3,'loan_4',-50,'2018-11-02 13:14:41',NULL),
+(837,3,'Selfie',25,'2018-11-02 13:14:41',NULL),
+(839,3,'Slip Gaji',100,'2018-11-02 13:14:41',NULL),
+(774,5,'KTP',25,'2018-11-02 04:46:07',NULL),
+(775,5,'Selfie',25,'2018-11-02 04:46:07',NULL);
+
+/*Table structure for table `user` */
+
+DROP TABLE IF EXISTS `user`;
+
+CREATE TABLE `user` (
+  `user_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `phone_number` varchar(11) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `user_name` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `salary` int(20) DEFAULT NULL,
+  `credit_score` int(11) NOT NULL DEFAULT '200',
+  `created_time` timestamp NULL DEFAULT NULL,
+  `updated_time` timestamp NULL DEFAULT NULL,
+  `outlet` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `outlet_addr` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `outlet_info` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `last_login` timestamp NULL DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `user` */
+
+insert  into `user`(`user_id`,`phone_number`,`user_name`,`salary`,`credit_score`,`created_time`,`updated_time`,`outlet`,`outlet_addr`,`outlet_info`,`last_login`,`status`) values 
+(1,'85688233722',NULL,NULL,300,'2018-10-29 00:00:00',NULL,'Kioson Head Office','Jl. Prof. Dr. Satrio Kav. 18 Jakarta Selatan',NULL,NULL,1),
+(2,'81808260000',NULL,NULL,425,'2018-10-29 00:00:00',NULL,'MKNT Head Office','Kuningan City lantai 28 Jakarta Selatan',NULL,'2018-11-01 12:18:52',1),
+(3,'818457475',NULL,10100000,575,'2018-10-29 00:00:00',NULL,'Asani Head Office','Axa Tower lantai 28 Jakarta Selatan',NULL,'2018-11-01 07:30:09',1),
+(4,'85728333045',NULL,NULL,200,'2018-10-29 19:08:31','2018-10-29 19:08:31',NULL,NULL,NULL,'2018-10-31 20:38:19',1),
+(5,'81994097088',NULL,NULL,450,'2018-10-29 19:39:16','2018-10-29 19:39:16',NULL,NULL,NULL,'2018-11-02 03:08:18',1),
+(6,'81863876087',NULL,NULL,200,'2018-10-30 13:26:34',NULL,NULL,NULL,NULL,'2018-10-31 20:17:09',1),
+(7,'81977682984',NULL,NULL,400,'2018-10-30 14:02:05',NULL,NULL,NULL,NULL,'2018-11-01 10:40:00',1),
+(8,'81222222222',NULL,NULL,200,'2018-10-30 14:12:24',NULL,NULL,NULL,NULL,'2018-10-30 14:12:24',1),
+(9,'8121151095',NULL,NULL,400,'2018-10-31 02:54:30',NULL,NULL,NULL,NULL,'2018-10-31 16:57:34',1),
+(10,'85669457128',NULL,NULL,400,'2018-10-31 03:40:07',NULL,NULL,NULL,NULL,'2018-11-01 07:44:42',1),
+(11,'82121248631',NULL,NULL,200,'2018-10-31 11:39:07',NULL,NULL,NULL,NULL,'2018-11-01 03:51:23',1),
+(13,'82112975458',NULL,NULL,200,'2018-11-01 06:47:46',NULL,NULL,NULL,NULL,'2018-11-01 08:54:33',1),
+(14,'81363876087',NULL,NULL,200,'2018-11-01 07:30:29',NULL,NULL,NULL,NULL,'2018-11-01 07:51:48',1),
+(15,'81224161895',NULL,NULL,200,'2018-11-01 07:43:32',NULL,NULL,NULL,NULL,'2018-11-01 09:10:59',1);
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
